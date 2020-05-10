@@ -1,0 +1,30 @@
+{
+    "name": "DocumentPlateau",
+    "fields": [
+        {
+            "fieldName": "programme",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "plateau",
+            "otherEntityRelationshipName": "documentPlateau",
+            "relationshipName": "plateau",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200509205700",
+    "entityTableName": "document_plateau",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

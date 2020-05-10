@@ -1,0 +1,84 @@
+entity Club {	
+    nom String required,
+    adresse String,
+    telephone String,
+    email String required
+}
+entity LogoClub{
+    logo Blob
+}
+entity Stade {
+	nom String required,
+    adresse String,
+    codePostal String,
+    ville String
+}
+entity Categorie {
+	section Section,
+    descrition String
+}
+enum Section {
+	U6, U7, U8, U9
+}
+
+entity Referent {
+	nom String,
+    prenom String,
+    licence String,
+    telephone String,
+    email String
+}
+
+entity Plateau {
+	dateDebut Instant required,
+    dateFin Instant,    
+    nombreEquipeMax Integer,
+    nombreEquipe Integer,
+    statut Statut,
+    valid Boolean,
+    version Long
+}
+
+entity DocumentPlateau {
+    programme Blob
+}
+
+enum Statut{
+	ENATTENTE,ENCOURS,COMPLET,CLOTURE
+}
+entity Inscription {
+    nombreEquipe Integer required
+}
+
+relationship OneToOne {
+    Plateau{documentPlateau} to DocumentPlateau{plateau},
+    Club{logoClub} to LogoClub{club},
+}
+
+relationship OneToMany {
+	Club{stade(nom)} to Stade{club(nom)},	
+	Plateau{inscription} to Inscription{plateau}
+}
+relationship ManyToMany {
+    Club{categorie(section)} to Categorie{club(nom)}
+}
+
+relationship ManyToOne {
+    Plateau{referent(nom)} to Referent,
+    Plateau{user} to User,
+    Referent{user} to User,
+    Categorie{user} to User,
+    Stade{user} to User,
+    Inscription{club(nom)} to Club,
+    Inscription{referent(nom)} to Referent,
+    Plateau{stade(nom)} to Stade,
+    Club{user} to User,
+    Plateau{categorie(section)} to Categorie
+}
+
+paginate Plateau, Club, Stade with infinite-scroll
+paginate Plateau, Club, Stade, Referent with pagination
+
+filter Plateau, Referent
+
+service all with serviceImpl

@@ -1,11 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MenuItem from 'app/shared/layout/menus/menu-item';
 import { DropdownItem } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink as Link } from 'react-router-dom';
-
+import { Translate, translate } from 'react-jhipster';
 import { NavDropdown } from './menu-components';
+import { Referent, Stade } from '../header/header-components';
+import { relativeTimeRounding } from 'moment';
 
+
+
+const StadeReferent = () => {
+  const isAdmin = localStorage.getItem('isAdmin') === 'true';
+  if(!isAdmin)
+  return (
+    
+      <div>
+    <MenuItem icon="list" to="/stade">
+        Stade
+     </MenuItem>
+    
+     <MenuItem icon="user" to="/referent">
+        Referent
+     </MenuItem>
+     </div>
+    )
+    else 
+     return null;
+  
+};
 const accountMenuItemsAuthenticated = (
   <>
     <MenuItem icon="wrench" to="/account/settings">
@@ -14,6 +37,7 @@ const accountMenuItemsAuthenticated = (
     <MenuItem icon="lock" to="/account/password">
       Password
     </MenuItem>
+    <StadeReferent/>
     <MenuItem icon="sign-out-alt" to="/logout">
       Sign out
     </MenuItem>
@@ -24,9 +48,6 @@ const accountMenuItems = (
   <>
     <MenuItem id="login-item" icon="sign-in-alt" to="/login">
       Sign in
-    </MenuItem>
-    <MenuItem icon="sign-in-alt" to="/account/register">
-      Register
     </MenuItem>
   </>
 );

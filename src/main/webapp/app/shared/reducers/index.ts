@@ -11,6 +11,38 @@ import activate, { ActivateState } from 'app/modules/account/activate/activate.r
 import password, { PasswordState } from 'app/modules/account/password/password.reducer';
 import settings, { SettingsState } from 'app/modules/account/settings/settings.reducer';
 import passwordReset, { PasswordResetState } from 'app/modules/account/password-reset/password-reset.reducer';
+// prettier-ignore
+import club, {
+  ClubState
+} from 'app/entities/club/club.reducer';
+// prettier-ignore
+import logoClub, {
+  LogoClubState
+} from 'app/entities/logo-club/logo-club.reducer';
+// prettier-ignore
+import stade, {
+  StadeState
+} from 'app/entities/stade/stade.reducer';
+// prettier-ignore
+import categorie, {
+  CategorieState
+} from 'app/entities/categorie/categorie.reducer';
+// prettier-ignore
+import referent, {
+  ReferentState
+} from 'app/entities/referent/referent.reducer';
+// prettier-ignore
+import plateau, {
+  PlateauState
+} from 'app/entities/plateau/plateau.reducer';
+// prettier-ignore
+import documentPlateau, {
+  DocumentPlateauState
+} from 'app/entities/document-plateau/document-plateau.reducer';
+// prettier-ignore
+import inscription, {
+  InscriptionState
+} from 'app/entities/inscription/inscription.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {
@@ -23,6 +55,14 @@ export interface IRootState {
   readonly passwordReset: PasswordResetState;
   readonly password: PasswordState;
   readonly settings: SettingsState;
+  readonly club: ClubState;
+  readonly logoClub: LogoClubState;
+  readonly stade: StadeState;
+  readonly categorie: CategorieState;
+  readonly referent: ReferentState;
+  readonly plateau: PlateauState;
+  readonly documentPlateau: DocumentPlateauState;
+  readonly inscription: InscriptionState;
   /* jhipster-needle-add-reducer-type - JHipster will add reducer type here */
   readonly loadingBar: any;
 }
@@ -37,6 +77,14 @@ const rootReducer = combineReducers<IRootState>({
   passwordReset,
   password,
   settings,
+  club,
+  logoClub,
+  stade,
+  categorie,
+  referent,
+  plateau,
+  documentPlateau,
+  inscription,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar
 });

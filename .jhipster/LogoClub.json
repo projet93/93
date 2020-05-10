@@ -1,0 +1,30 @@
+{
+    "name": "LogoClub",
+    "fields": [
+        {
+            "fieldName": "logo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "club",
+            "otherEntityRelationshipName": "logoClub",
+            "relationshipName": "club",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200509205200",
+    "entityTableName": "logo_club",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
