@@ -122,7 +122,7 @@ export const InscriptionUpdate = (props: IInscriptionUpdateProps) => {
                 </AvInput>
               </AvGroup>
               
-              <Button tag={Link} id="cancel-save" to="/inscription" replace color="info">
+              <Button tag={Link} id="cancel-save" to="/plateau" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
                 <span className="d-none d-md-inline">Back</span>

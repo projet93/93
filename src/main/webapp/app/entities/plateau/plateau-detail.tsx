@@ -122,14 +122,10 @@ export const PlateauDetail = (props: IPlateauDetailProps) => {
             {plateauEntity.inscriptions && plateauEntity.inscriptions.length > 0 ? (
               <Table responsive>
                 <thead>
-                  <tr>
-                    <th>
-                      ID
-                    </th>
+                  <tr>                    
                     <th>
                       Nombre Equipe
                     </th>
-
                     <th>
                       Club
                     </th>
@@ -141,12 +137,7 @@ export const PlateauDetail = (props: IPlateauDetailProps) => {
                 </thead>
                 <tbody>
                   {plateauEntity.inscriptions.map((inscription, i) => (
-                    <tr key={`entity-${i}`}>
-                      <td>
-                        <Button tag={Link} to={`${match.url}/${inscription.id}`} color="link" size="sm">
-                          {inscription.id}
-                        </Button>
-                      </td>
+                    <tr key={`entity-${i}`}>                      
                       <td>{inscription.nombreEquipe}</td>
                       <td>{inscription.club ? <Link to={`club/${inscription.club.id}`}>{inscription.club.nom}</Link> : ''}</td>
                       <td>{inscription.referent ? <Link to={`referent/${inscription.referent.id}`}>{inscription.referent.nom}</Link> : ''}</td>
