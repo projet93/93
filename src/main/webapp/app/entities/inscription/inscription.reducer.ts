@@ -5,6 +5,7 @@ import { cleanEntity } from 'app/shared/util/entity-utils';
 import { REQUEST, SUCCESS, FAILURE } from 'app/shared/reducers/action-type.util';
 
 import { IInscription, defaultValue } from 'app/shared/model/inscription.model';
+import { IPlateau } from 'app/shared/model/plateau.model';
 
 export const ACTION_TYPES = {
   FETCH_INSCRIPTION_LIST: 'inscription/FETCH_INSCRIPTION_LIST',
