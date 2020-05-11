@@ -60,20 +60,18 @@ export const Plateau = (props: IPlateauProps) => {
   }
   function isInscription(plateauEntity) {
     let result = true;
-
     if (isAdmin || login === plateauEntity.user.login) {
-      return false;
+       return false;
     }
     else {
+      
 
       if (plateauEntity.inscriptions) {
-
         plateauEntity.inscriptions.find(function (value) {
           const loginValue = 'club' + value.club.id;
           if (plateauEntity.id === value.plateau.id && loginValue === login) {
             result =  false;
           }
-
         });
       }
     }
@@ -107,17 +105,13 @@ export const Plateau = (props: IPlateauProps) => {
                   Date Fin <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={sort('nombreEquipeMax')}>
-                  Nombre Equipe Max <FontAwesomeIcon icon="sort" />
+                  Max Equipe <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={sort('nombreEquipe')}>
-                  Nombre Equipe <FontAwesomeIcon icon="sort" />
+                  Nbr Participant <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={sort('statut')}>
                   Statut <FontAwesomeIcon icon="sort" />
-                </th>
-
-                <th>
-                  Document Plateau <FontAwesomeIcon icon="sort" />
                 </th>
                 <th>
                   Referent <FontAwesomeIcon icon="sort" />
@@ -144,17 +138,9 @@ export const Plateau = (props: IPlateauProps) => {
                   <td>
                     <TextFormat type="date" value={plateau.dateFin} format={APP_DATE_FORMAT} />
                   </td>
-                  <td>{plateau.nombreEquipeMax}</td>
-                  <td>{plateau.nombreEquipe}</td>
+                  <td className="text-center">{plateau.nombreEquipeMax}</td>
+                  <td className="text-center">{plateau.nombreEquipe}</td>
                   <td>{plateau.statut}</td>
-
-                  <td>
-                    {plateau.documentPlateau ? (
-                      <Link to={`document-plateau/${plateau.documentPlateau.id}`}>{plateau.documentPlateau.id}</Link>
-                    ) : (
-                        ''
-                      )}
-                  </td>
                   <td>{plateau.referent ? <Link to={`referent/${plateau.referent.id}`}>{plateau.referent.nom}</Link> : ''}</td>
                   <td>{plateau.categorie ? <Link to={`categorie/${plateau.categorie.id}`}>{plateau.categorie.section}</Link> : ''}</td>
                   <td className="text-right">

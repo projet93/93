@@ -101,7 +101,7 @@ const apiUrl = 'api/inscriptions';
 
 export const getEntities: ICrudGetAllAction<IInscription> = (page, size, sort) => ({
   type: ACTION_TYPES.FETCH_INSCRIPTION_LIST,
-  payload: axios.get<IInscription>(`${apiUrl}?cacheBuster=${new Date().getTime()}`)
+  payload: axios.get<IPlateau>(`${'api/plateaus'}?cacheBuster=${new Date().getTime()}`)
 });
 
 export const getEntity: ICrudGetAction<IInscription> = id => {

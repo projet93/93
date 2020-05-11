@@ -32,7 +32,7 @@ const Footer = props => (
             personnelles</a></li>
       </ul>
       <ul className="menu menu-compl">
-        <li><a href="javascript:Didomi.preferences.show()">Préférences
+        <li><a href="Didomi.preferences.show()">Préférences
             Cookies</a></li>
       </ul>
     </nav>
