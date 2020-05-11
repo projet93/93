@@ -60,15 +60,15 @@ public class PlateauServiceImpl implements PlateauService {
     @Transactional(readOnly = true)
     public Page<Plateau> findByUserIsCurrentUser(Pageable pageable) {
         log.debug("Request to get all Plateaux");
-        return plateauRepository.findByUserIsCurrentUser(pageable);
+        return plateauRepository.findAllWithEagerRelationships(pageable);
     }
     /**
      * Get all the plateaus with eager load of many-to-many relationships.
      *
      * @return the list of entities.
      */
-    public Page<Plateau> findAllWithEagerRelationships(Pageable pageable) {
-        return plateauRepository.findAll(pageable);
+    public Page<Plateau> findAllWithLazyRelationships(Pageable pageable) {
+        return plateauRepository.findAllWithEagerRelationships(pageable);
     }
 
     /**

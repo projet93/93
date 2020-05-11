@@ -20,18 +20,15 @@ public interface PlateauRepository extends JpaRepository<Plateau, Long>, JpaSpec
     @Query("select plateau from Plateau plateau where plateau.user.login = ?#{principal.username}")
     List<Plateau> findByUserIsCurrentUser();
 
-//    @Query(value = "select distinct plateau from Plateau plateau",
-//        countQuery = "select count(distinct plateau) from Plateau plateau")
-//    Page<Plateau> findAll(Pageable pageable);
+    @Query(value = "select distinct plateau from Plateau plateau left join fetch plateau.user left join fetch plateau.referent left join fetch plateau.categorie where plateau.valid = true or plateau.user.login = ?#{principal.username}",
+        countQuery = "select count(distinct plateau) from Plateau plateau")
+    Page<Plateau> findAllWithEagerRelationships(Pageable pageable);
 
     @Query("select distinct plateau from Plateau plateau left join fetch plateau.user")
-    List<Plateau> findAllWithLazyRelationships();
+    List<Plateau> findAllWithEagerRelationships();
 
-    @Query("select plateau from Plateau plateau left join fetch plateau.stade join fetch plateau.referent join fetch plateau.categorie where plateau.id =:id")
+    @Query("select plateau from Plateau plateau left join fetch plateau.stade join fetch plateau.referent join fetch plateau.categorie join fetch plateau.inscriptions where plateau.id =:id")
     Optional<Plateau> findOneWithEagerRelationships(@Param("id") Long id);
-    
-    @Query("select plateau from Plateau plateau where plateau.id =:id")
-    Optional<Plateau> findOneWithLazyRelationships(@Param("id") Long id);
 
     @Query("select plateau from Plateau plateau where plateau.valid = true or plateau.user.login = ?#{principal.username}")
 	Page<Plateau> findByUserIsCurrentUser(Pageable pageable);

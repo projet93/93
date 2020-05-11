@@ -34,7 +34,7 @@ public interface PlateauService {
      *
      * @return the list of entities.
      */
-    Page<Plateau> findAllWithEagerRelationships(Pageable pageable);
+    Page<Plateau> findAllWithLazyRelationships(Pageable pageable);
 
     /**
      * Get the "id" plateau.
